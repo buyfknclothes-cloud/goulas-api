@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbywhEnBtXbu_iW9hXKRpDEHgYurLILjvbLA3t3qUEPDIC9x4fJo3lJZj02tR2fOnR5Khg/exec';;
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzRlOF4_QoIBFFBtB4WAB7-TMzKwYdNpiAz9xrbd7H32yO4vpymMdiAI2BYbmA8lJtUHg/exec';
 
 app.get('/api', async (req, res) => {
   try {
