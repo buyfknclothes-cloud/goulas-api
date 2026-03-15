@@ -11,9 +11,20 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbyHaQXeoh8LPZRaxwM_rbKD
 app.get('/api', async (req, res) => {
   try {
     const params = new URLSearchParams(req.query);
-    const response = await fetch(GAS_URL + '?' + params, { redirect: 'follow' });
-    const data = await response.json();
-    res.json(data);
+    const response = await fetch(GAS_URL + '?' + params, {
+      redirect: 'follow',
+      headers: {
+        'User-Agent': 'Mozilla/5.0',
+        'Accept': 'application/json, text/javascript, */*'
+      }
+    });
+    const text = await response.text();
+    try {
+      const data = JSON.parse(text);
+      res.json(data);
+    } catch(e) {
+      res.status(500).json({ error: 'GAS returned HTML instead of JSON', preview: text.substring(0, 200) });
+    }
   } catch(e) {
     res.status(500).json({ error: e.message });
   }
