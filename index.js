@@ -5,9 +5,7 @@ const fetch   = require('node-fetch');
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-const GAS_URL = 'https://script.google.com/macros/s/AKfycby3cusM9fhROVwFrP4_J21QScZIsb8WuNwwP2KXdBJ5RPl9et72EB67Sn5ZAudBoHGeug
-
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwjRvqpIDhgpA36OcUQWJffKxGl9Dhe_fSqRpfMeEuzanL4p-WIQtkmFahrH5eKi1V4wQ/exec';
 app.get('/api', async (req, res) => {
   try {
     const params = new URLSearchParams(req.query);
